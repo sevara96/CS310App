@@ -106,6 +106,16 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+    public void tosellpage(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, SellActivity.class);
+        startActivity(intent);
+    }
+    public void toprofilepage(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, ProfileActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

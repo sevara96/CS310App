@@ -1,7 +1,9 @@
 package com.example.cs310app;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -56,10 +58,6 @@ public class ProfileActivity extends AppCompatActivity {
                     email.setText(myEmail);
                     phone.setText(myPhone);
 
-
-
-
-
                 }
 
             }
@@ -72,5 +70,15 @@ public class ProfileActivity extends AppCompatActivity {
 
             }
         });
+    }
+    public void tosellpage(View view)
+    {
+        Intent intent = new Intent(ProfileActivity.this, SellActivity.class);
+        startActivity(intent);
+    }
+    public void tomainactivity(View view)
+    {
+        Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 }

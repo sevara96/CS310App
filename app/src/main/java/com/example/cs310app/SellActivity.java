@@ -93,7 +93,7 @@ public class SellActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //change to BuyActivity page
-                startActivity( new android.content.Intent( getApplicationContext(), ProfileActivity.class ) );
+                startActivity( new android.content.Intent( getApplicationContext(), MainActivity.class ) );
             }
         } );
         // when Profile button click

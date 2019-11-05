@@ -20,7 +20,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    <com.google.android.material.navigation.NavigationView-->
+    <!--    <com.google.android.material.navigation.NavigationView-->
 <!--        android:id="@+id/navigation"-->
 <!--        android:layout_width="wrap_content"-->
 <!--        android:layout_height="match_parent"-->
@@ -30,14 +30,35 @@
 
 <!--    </com.google.android.material.navigation.NavigationView>-->
 
-    <include layout="@layout/content_main" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
+    <Button
+        android:id="@+id/tosellbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        app:srcCompat="@android:drawable/ic_dialog_map" />
+        android:text="Sell"
+        android:onClick="tosellpage"
+
+        />
+    <Button
+        android:id="@+id/toprofilebutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|left"
+        android:layout_margin="@dimen/fab_margin"
+        android:text="Profile"
+        android:onClick="toprofilepage"
+
+        />
+
+    <include layout="@layout/content_main" />
+
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_gravity="bottom|end"-->
+<!--        android:layout_margin="@dimen/fab_margin"-->
+<!--        app:srcCompat="@android:drawable/ic_dialog_map" />-->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
