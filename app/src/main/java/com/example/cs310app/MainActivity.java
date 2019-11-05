@@ -66,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.sell:
                 Toast.makeText(MainActivity.this, "Sell " , Toast.LENGTH_SHORT).show();
+                toSellActivity();
                 break;
 
             case R.id.FindFriends:
@@ -134,6 +135,10 @@ public class MainActivity extends AppCompatActivity {
     private void toBuyActivity() {
 
         Intent setupIntent = new Intent( MainActivity.this, BuyActivity.class);
+
+    private void toSellActivity() {
+
+        Intent setupIntent = new Intent( MainActivity.this, SellActivity.class);
         setupIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(setupIntent);
         finish();
