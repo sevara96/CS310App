@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "185873221701",
+    "firebase_url": "https://cs310app-2defc.firebaseio.com",
+    "project_id": "cs310app-2defc",
+    "storage_bucket": "cs310app-2defc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:185873221701:android:bd1967a0cdfbbad093fb2c",
+        "android_client_info": {
+          "package_name": "com.example.cs310app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "185873221701-15i0aab74pac93ps58ekbmb98qqm5t1b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.cs310app",
+            "certificate_hash": "1aeb87f8530dba0cfd45f9639cb5ac185824ccca"
+          }
+        },
+        {
+          "client_id": "185873221701-5t0vee0sl6jiph0n9tkr0p0dp46mlj30.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgLzjobWianfq8LjQyPRC5dhP14tj_QnU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "185873221701-5t0vee0sl6jiph0n9tkr0p0dp46mlj30.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
