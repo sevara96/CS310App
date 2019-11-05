@@ -59,6 +59,9 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Profile " , Toast.LENGTH_SHORT).show();
                 break;
             case R.id.buy:
+
+                toBuyActivity();
+
                 Toast.makeText(MainActivity.this, "Buy " , Toast.LENGTH_SHORT).show();
                 break;
             case R.id.sell:
@@ -129,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void toBuyActivity() {
+
+        Intent setupIntent = new Intent(MainActivity.this, BuyActivity.class);
+    }
     private void toSellActivity() {
 
         Intent setupIntent = new Intent( MainActivity.this, SellActivity.class);
