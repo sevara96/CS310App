@@ -70,6 +70,11 @@ public class RegisterActivity extends AppCompatActivity {
         String password = userPassword.getText().toString();
         String confirmPass =confirm.getText().toString();
 
+        int emailDomainStart = email.lastIndexOf('@');
+        String emailDomain = email.substring(emailDomainStart + 1);
+
+
+
         if(TextUtils.isEmpty(email)){
             Toast.makeText(this, "Please write your email...",Toast.LENGTH_SHORT).show();
         }
@@ -79,35 +84,39 @@ public class RegisterActivity extends AppCompatActivity {
         if(TextUtils.isEmpty(confirmPass)){
             Toast.makeText(this, "Please confirm your password...",Toast.LENGTH_SHORT).show();
         }
-         else if(!password.equals(confirmPass)){
+        else if(!password.equals(confirmPass)){
             Toast.makeText(this, "Passwords don't match...",Toast.LENGTH_SHORT).show();
 
-        } else{
+        }else if(!emailDomain.equals("usc.edu")) {
+            Toast.makeText(this, "Please use a USC email to sign up...", Toast.LENGTH_SHORT).show();
+        }
+        else{
 
-             loading.setTitle("Creating new account");
-             loading.setMessage("Please wait");
-             loading.show();
-             loading.setCanceledOnTouchOutside(true);
-             mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                 @Override
-                 public void onComplete(@NonNull Task<AuthResult> task) {
+            loading.setTitle("Creating new account");
+            loading.setMessage("Please wait");
+            loading.show();
+            loading.setCanceledOnTouchOutside(true);
+            mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                     if(task.isSuccessful()){
-                         SendToSetUp();
-                         Toast.makeText(RegisterActivity.this, "You are authenticated successfully", Toast.LENGTH_SHORT).show();
-                         loading.dismiss();
-                     } else{
-                         String message = task.getException().getMessage();
-                         Toast.makeText(RegisterActivity.this, "Error occurred: " + message, Toast.LENGTH_SHORT).show();
-                         loading.dismiss();
-                     }
+                    if(task.isSuccessful()){
+                        SendToSetUp();
+                        Toast.makeText(RegisterActivity.this, "You are authenticated successfully", Toast.LENGTH_SHORT).show();
+                        loading.dismiss();
+                    } else{
+                        String message = task.getException().getMessage();
+                        Toast.makeText(RegisterActivity.this, "Error occurred: " + message, Toast.LENGTH_SHORT).show();
+                        loading.dismiss();
+                    }
 
 
-                 }
-             });
+                }
+            });
 
         }
     }
+
 
     private void SendToSetUp() {
 
