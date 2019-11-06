@@ -23,6 +23,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class SellActivity extends AppCompatActivity {
@@ -31,6 +33,7 @@ public class SellActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String current_user_id;
     private String name,desc,imgUrl,address;
+    private String saveCurrentTime,saveCurrentDate,postRandomName;
     private double price;
     EditText itemName,Description,imgURL,Address,Price;
     //private NavigationView navigationView;
@@ -78,21 +81,11 @@ public class SellActivity extends AppCompatActivity {
                                               }
                                           }
                                       });
-        //  when logout button click
-        Button LogOut = (Button) findViewById( R.id.logoutButton );
-        LogOut.setOnClickListener( new View.OnClickListener() {
-                                       @Override
-                                       public void onClick(View view) {
-                                           // code
-                                           startActivity(new android.content.Intent(getApplicationContext(), LoginActivity.class));
-                                       }
-                                   });
         // when Buy button click
         Button Buy = (Button) findViewById( R.id.buyButton );
         Buy.setOnClickListener( new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //change to BuyActivity page
                 startActivity( new android.content.Intent( getApplicationContext(), MainActivity.class ) );
             }
         } );
@@ -112,6 +105,9 @@ public class SellActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 if(dataSnapshot.exists()){
                     String userFullName = dataSnapshot.child("fullName").getValue().toString();
+                    String email = dataSnapshot.child("email").getValue().toString();///////////////////
+                    String phone = dataSnapshot.child("phone").getValue().toString();///////////////////
+
 
                     HashMap postsMap = new HashMap();
                     postsMap.put("uid",current_user_id );
@@ -120,8 +116,21 @@ public class SellActivity extends AppCompatActivity {
                     postsMap.put("imageURL",imgUrl );
                     postsMap.put("address",address );
                     postsMap.put("price",price );
-                    postsMap.put("fullname",userFullName );
-                    PostsRef.child(current_user_id+"Items").updateChildren(postsMap).addOnCompleteListener(new OnCompleteListener() {
+                    postsMap.put("fullName",userFullName);///////////////////////////
+                    postsMap.put("email",email);/////////////////////////////////
+                    postsMap.put("phone",phone);////////////////////////////
+
+                    Calendar calFordDate = Calendar.getInstance();////////////////////////////
+                    SimpleDateFormat currentDate = new SimpleDateFormat("dd-MMMM-yyyy");////////////////////////////
+                    saveCurrentDate = currentDate.format(calFordDate.getTime());////////////////////////////
+
+                    Calendar calFordTime = Calendar.getInstance();////////////////////////////
+                    SimpleDateFormat currentTime = new SimpleDateFormat("HH:mm:ss");////////////////////////////
+                    saveCurrentTime = currentTime.format(calFordDate.getTime());////////////////////////////
+
+                    postRandomName = saveCurrentDate + saveCurrentTime;////////////////////////////
+                    ////////////////////////////under
+                    PostsRef.child(current_user_id+postRandomName).updateChildren(postsMap).addOnCompleteListener(new OnCompleteListener() {
                         @Override
                         public void onComplete(Task task) {
                             if(task.isSuccessful()){

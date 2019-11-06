@@ -29,12 +29,74 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Price"
+        android:id="@+id/price"
+        android:textSize="18sp"
+        android:textColor="#a9a9a9"
+        android:layout_below="@id/description"
+        android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:text="Description"
         android:id="@+id/description"
         android:textSize="18sp"
         android:textColor="#a9a9a9"
         android:layout_below="@id/title"
         android:layout_marginTop="5dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seller Name"
+        android:id="@+id/sellerName"
+        android:textSize="18sp"
+        android:textColor="#a9a9a9"
+        android:layout_below="@id/price"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seller Email"
+        android:id="@+id/sellerEmail"
+        android:textSize="18sp"
+        android:textColor="#a9a9a9"
+        android:layout_below="@id/sellerName"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seller Phone"
+        android:id="@+id/sellerPhone"
+        android:textSize="18sp"
+        android:textColor="#a9a9a9"
+        android:layout_below="@id/sellerEmail"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Seller Address"
+        android:id="@+id/sellerAddress"
+        android:textSize="18sp"
+        android:textColor="#a9a9a9"
+        android:layout_below="@id/sellerPhone"
+        android:layout_marginTop="5dp"
+        />
+
+    <Button
+        android:id="@+id/markSold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mark item as sold"
+        android:layout_below="@id/sellerAddress"
+        android:layout_marginTop="20sp"
+        android:layout_centerInParent="true"
         />
 
 </RelativeLayout>

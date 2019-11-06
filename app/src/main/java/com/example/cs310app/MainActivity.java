@@ -64,12 +64,12 @@ import java.util.Collections;
 public class MainActivity extends AppCompatActivity {
 
 
-   private  FirebaseAuth mAuth;
-   private DatabaseReference userRef;
+    private  FirebaseAuth mAuth;
+    private DatabaseReference userRef;
 
-   private DrawerLayout drawerLayout;
-   private NavigationView navigationView;
-   private RecyclerView postList;
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
+    private RecyclerView postList;
 
     RecyclerView mRecyclerView;
     MyAdapter myAdapter;
@@ -105,6 +105,11 @@ public class MainActivity extends AppCompatActivity {
 //        });
 
 
+    }
+    public void tomappage(View view)
+    {
+        Intent intent = new Intent(MainActivity.this, MapsActivity.class);
+        startActivity(intent);
     }
     public void tosellpage(View view)
     {
@@ -293,9 +298,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.logout:
-               mAuth.signOut();
-               toLogActivity();
-               break;
+                mAuth.signOut();
+                toLogActivity();
+                break;
         }
 
     }
@@ -306,9 +311,9 @@ public class MainActivity extends AppCompatActivity {
     protected  void onStart(){
         super.onStart();
         FirebaseUser currUser = mAuth.getCurrentUser();
-        
+
         if(currUser == null){
-            
+
             toLogActivity();
         } else {
             checkUser();

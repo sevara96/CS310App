@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     tools:context=".SellActivity">
 
+    <ImageView
+        android:id="@+id/classifieds_logo"
+        android:layout_width="wrap_content"
+        android:layout_height="100sp"
+        android:layout_marginTop="20sp"
+        app:srcCompat="@drawable/usclassifieds_logo" />
+
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -142,31 +149,18 @@
              />
 
         <Button
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom | right"
-            android:layout_margin="@dimen/fab_margin"
-            android:layout_marginLeft="70dp"
-            android:layout_marginTop="600dp"
-            android:text="Logout"
-            android:textAllCaps="false"
-            android:textColor="@color/colorPrimaryDark"
-            android:textColorHighlight="@color/colorPrimaryDark"
-            />
-
-        <Button
             android:id="@+id/buyButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="160dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="@dimen/fab_margin"
+            android:layout_marginLeft="70dp"
             android:layout_marginTop="600dp"
             android:text="Buy"
             android:textAllCaps="false"
             android:textColor="@color/colorPrimaryDark"
             android:textColorHighlight="@color/colorPrimaryDark"
-            android:layout_gravity="bottom|center_horizontal"
-            android:layout_margin="@dimen/fab_margin" />
+            />
 
         <Button
             android:id="@+id/profileButton"
@@ -195,22 +189,5 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_sells" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:gravity="fill|center_vertical"
-        android:layerType="none"
-        android:minHeight="70dp"
-        android:paddingLeft="180dp"
-        android:scaleX="2"
-        android:scaleY="2"
-        app:layout_anchor="@+id/appBarLayout"
-        app:layout_anchorGravity="center"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:title="Sell" />
-
 
 </RelativeLayout>

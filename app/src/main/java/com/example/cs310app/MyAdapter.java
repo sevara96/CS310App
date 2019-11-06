@@ -62,6 +62,16 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
 
                 String gTitle = items.get(position).getTitle();
                 String gDesc = items.get(position).getDescription(); //these objects get our data from previous activity
+
+                String gPrice = items.get(position).getStringPrice();
+                String gLocation = items.get(position).getAddress();
+                String gFullName =items.get(position).getFullName();
+                String gEmail = items.get(position).getEmail();
+                String gPhone = items.get(position).getPhone();
+
+
+
+                // String gPrice = items.get(position).getPrice();
                 /////BitmapDrawable bitmapDrawable = (BitmapDrawable)myHolder.mImaeView.getDrawable(); //this will get our image from drawable
                 //^^^^^^ look in the above line if there is an error and it loads android image only
                 /////Bitmap bitmap = bitmapDrawable.getBitmap();
@@ -76,6 +86,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 Intent intent = new Intent(c, ItemPageActivity.class);
                 intent.putExtra("iTitle", gTitle);
                 intent.putExtra("iDesc", gDesc); //get data and put in intent
+                intent.putExtra("iPrice", gPrice);
+                intent.putExtra("iLocation", gLocation);
+                intent.putExtra("iFullName", gFullName);
+                intent.putExtra("iEmail", gEmail);
+                intent.putExtra("iPhone", gPhone);
+
                 /////intent.putExtra("iImage", bytes);
                 c.startActivity(intent);
 

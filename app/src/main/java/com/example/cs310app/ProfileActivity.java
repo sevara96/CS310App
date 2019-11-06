@@ -87,4 +87,18 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileActivity.this, FindFriendsActivity.class);
         startActivity(intent);
     }
+    ///////////////////////////////
+    public void toSetUpactivity(View view)
+    {
+        Intent intent = new Intent(ProfileActivity.this, SetupActivity.class);
+        startActivity(intent);
+    }
+    /////////////////////////////////
+    public void toLogActivity(View view) {
+        mAuth.signOut();
+        Intent loginIntent = new Intent( ProfileActivity.this, LoginActivity.class);
+        loginIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(loginIntent);
+        finish();
+    }
 }

@@ -73,7 +73,29 @@
         android:layout_gravity="bottom|left"
         android:onClick="tofindfriendsactivity"
         android:text="Find Friends"
+
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_alignBottom="@+id/tosellbutton"
         />
+
+    <Button
+        android:id="@+id/toupdateaccountbutton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toSetUpactivity"
+        android:text="Update Account"
+        android:layout_alignParentRight="true"
+        />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="toLogActivity"
+        android:text="Logout"
+        android:layout_alignParentLeft="true"
+         />
 
 
 </RelativeLayout>

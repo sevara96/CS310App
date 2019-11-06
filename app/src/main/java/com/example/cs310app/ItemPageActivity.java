@@ -4,16 +4,34 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+
 public class ItemPageActivity extends AppCompatActivity {
 
-    TextView mTitleTv, mDescTv;
+    TextView mTitleTv, mDescTv,mPriceTv, mLocationTv, mFullNameTv, mEmailTv, mPhoneTv;
     ImageView mImageIv;
+    Button mButton;
+
+    private FirebaseAuth mAuth;
+    private String currentUserID;
+    private DatabaseReference clickPostref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,12 +42,27 @@ public class ItemPageActivity extends AppCompatActivity {
         mTitleTv = findViewById(R.id.title);
         mDescTv= findViewById(R.id.description);
         mImageIv =findViewById(R.id.imageView);
+        mButton = findViewById(R.id.markSold);
+
+        mPriceTv = findViewById(R.id.price);
+        mLocationTv = findViewById(R.id.sellerAddress);
+        mEmailTv = findViewById(R.id.sellerEmail);
+        mPhoneTv = findViewById(R.id.sellerPhone);
+        mFullNameTv = findViewById(R.id.sellerName);
+
 
         //get data from intent where we put our data
         Intent intent = getIntent();
 
         String mTitle = intent.getStringExtra("iTitle");
-        String mDescription = intent.getStringExtra("iDesc");
+        String mDescription = "Description: "+intent.getStringExtra("iDesc");
+        String mPrice = "Price: $"+intent.getStringExtra("iPrice");
+        String mLocation = "Location: "+intent.getStringExtra("iLocation");
+        String mFullName ="Seller Name: "+intent.getStringExtra("iFullName");
+        String mPhone ="Seller Phone: "+intent.getStringExtra("iPhone");
+        String mEmail ="Seller Email: "+intent.getStringExtra("iEmail");
+
+
 
         /////byte[] mBytes = getIntent().getByteArrayExtra("iImage");
         //now you need to decode the image because from preious activity we get our image in bytes
@@ -42,9 +75,107 @@ public class ItemPageActivity extends AppCompatActivity {
 
         mTitleTv.setText(mTitle);
         mDescTv.setText(mDescription);
-        /////mImageIv.setImageBitmap(bitmap);
+
+        mPriceTv.setText(mPrice);
+        mLocationTv.setText(mLocation);
+        mFullNameTv.setText(mFullName);
+        mPhoneTv.setText(mPhone);
+        mEmailTv.setText(mEmail);
+
+        mAuth =FirebaseAuth.getInstance();
+        currentUserID = mAuth.getCurrentUser().getUid();
+        mButton = findViewById(R.id.markSold);
+        mButton.setVisibility(View.INVISIBLE);
+
+
+
+
+
+        Query clickPostref = FirebaseDatabase.getInstance().getReference().child("Items").orderByChild("title").equalTo(mTitle);
+        final Query dataBaseUserId = FirebaseDatabase.getInstance().getReference().child("Items").orderByChild("uid").equalTo(currentUserID);
+
+
+        clickPostref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+
+                if(dataSnapshot.exists()) {
+
+
+                    dataBaseUserId.addValueEventListener(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot data) {
+
+                            if(data.exists()){
+
+                                mButton.setVisibility(View.VISIBLE);
+
+                                mButton.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        for (DataSnapshot appleSnapshot : dataSnapshot.getChildren()) {
+                                            appleSnapshot.getRef().removeValue();
+                                        }
+                                        toMainActivity();
+
+                                    }
+                                });
+
+                            }
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                        }
+                    });
+
+
+
+
+
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+//        mButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                markItemSold();
+//            }
+//        });
+
+
 
     }
+
+    private  void markItemSold(){
+        clickPostref.removeValue();
+
+
+
+        toMainActivity();
+        Toast.makeText(this, "Item was marked sold " , Toast.LENGTH_SHORT).show();
+
+    }
+
+    private void toMainActivity() {
+        Intent mainIntent = new Intent( ItemPageActivity.this, MainActivity.class);
+        mainIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(mainIntent);
+        finish();
+    }
+
+
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu){

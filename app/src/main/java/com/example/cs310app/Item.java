@@ -8,11 +8,17 @@ public class Item {
 
     //member variables
     private String description;
-//    private String address;
+    private String address;
     private String itemPhotoURL;
     private String title;
-//    private List<String> tags;
+    //    private List<String> tags;
     private double price;
+    private String fullName;
+    private String email;
+    private String phone;
+
+
+
 
 
     //constructor
@@ -22,11 +28,14 @@ public class Item {
         this.description=description;
     }
 
-    public Item(String title, String itemPhotoURL, String description, double price){
+    public Item(String title, String itemPhotoURL, String description, double price, String fullName, String email, String phone){
         this.title=title;
         this.itemPhotoURL=itemPhotoURL;
         this.description=description;
         this.price = price;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
     }
 
     public Item(){}
@@ -37,6 +46,18 @@ public class Item {
 
     public String getDescription() {
         return description;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhone() {
+        return phone;
     }
 
 //    public String getAddress() {
@@ -54,6 +75,13 @@ public class Item {
     public double getPrice() {
         return price;
     }
+
+    public String getStringPrice() {
+        String p = Double.toString(price);
+        return p;
+    }
+
+    public String getAddress() {return address;}
 
     public void setDescription(String description) {
         this.description = description;
