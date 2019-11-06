@@ -82,4 +82,9 @@ public class ProfileActivity extends AppCompatActivity {
         Intent intent = new Intent(ProfileActivity.this, MainActivity.class);
         startActivity(intent);
     }
+    public void tofindfriendsactivity(View view)
+    {
+        Intent intent = new Intent(ProfileActivity.this, FindFriendsActivity.class);
+        startActivity(intent);
+    }
 }

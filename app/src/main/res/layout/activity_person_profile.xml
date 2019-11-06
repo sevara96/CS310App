@@ -4,11 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity">
+    tools:context=".PersonProfileActivity">
+
+
 
 
     <TextView
-        android:id="@+id/fullName"
+        android:id="@+id/person_fullName"
         android:layout_width="250sp"
         android:layout_height="50sp"
         android:layout_below="@id/classifieds_logo"
@@ -18,10 +20,10 @@
         android:layout_marginTop="30sp"
         />
     <TextView
-        android:id="@+id/email"
+        android:id="@+id/person_email"
         android:layout_width="250sp"
         android:layout_height="50sp"
-        android:layout_below="@id/fullName"
+        android:layout_below="@id/person_fullName"
         android:textSize="25dp"
         android:textColor="#d4af37"
 
@@ -29,15 +31,17 @@
         android:layout_marginTop="30sp"
         />
     <TextView
-        android:id="@+id/phone"
+        android:id="@+id/person_phone"
         android:layout_width="250sp"
         android:layout_height="50sp"
-        android:layout_below="@id/email"
+        android:layout_below="@id/person_email"
         android:textSize="25dp"
         android:textColor="#d4af37"
         android:layout_centerInParent="true"
         android:layout_marginTop="30sp"
         />
+
+
 
     <ImageView
         android:id="@+id/classifieds_logo"
@@ -46,36 +50,31 @@
         android:layout_marginTop="20sp"
         app:srcCompat="@drawable/usclassifieds_logo" />
 
-    <Button
-        android:id="@+id/tosellbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:onClick="tosellpage"
-        android:text="Sell"
-        android:layout_alignParentBottom="true"
-        />
 
     <Button
-        android:id="@+id/tomainbutton"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:onClick="tomainactivity"
-        android:text="Buy"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        />
+        android:layout_below="@+id/person_phone"
+        android:layout_marginTop="45dp"
+        android:text="Send friend request"
+        android:layout_centerInParent="true"
+
+        android:id="@+id/person_send_friend_req"/>
+
     <Button
-        android:id="@+id/tofindfriendsbutton"
-        android:layout_width="wrap_content"
+        android:id="@+id/person_decline_friend_req"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|left"
-        android:onClick="tofindfriendsactivity"
-        android:text="Find Friends"
-        />
+        android:layout_centerInParent="true"
+        android:layout_below="@id/person_send_friend_req"
+        android:layout_marginTop="45dp"
+        android:text="Decline friend request" />
+
 
 
 </RelativeLayout>
+
+
+
 
 
