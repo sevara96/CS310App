@@ -115,7 +115,7 @@ public class SellActivity extends AppCompatActivity {
 
                     HashMap postsMap = new HashMap();
                     postsMap.put("uid",current_user_id );
-                    postsMap.put("name",name );
+                    postsMap.put("title",name );
                     postsMap.put("description",desc );
                     postsMap.put("imageURL",imgUrl );
                     postsMap.put("address",address );

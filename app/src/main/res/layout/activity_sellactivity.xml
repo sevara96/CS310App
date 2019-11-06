@@ -21,7 +21,7 @@
             android:ems="10"
             android:importantForAutofill="no"
             android:inputType="textMultiLine|text"
-            android:text="Description" />
+             />
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -73,7 +73,7 @@
             android:editable="true"
             android:ems="10"
             android:inputType="number|numberDecimal"
-            android:text="Price" />
+             />
 
         <TextView
             android:id="@+id/imageURLView"
@@ -96,7 +96,7 @@
             android:gravity="start|top"
             android:inputType="textMultiLine"
             android:maxLines="4"
-            android:text="URL" />
+             />
 
         <EditText
             android:id="@+id/addressEditText"
@@ -108,7 +108,7 @@
             android:ems="10"
             android:gravity="start|top"
             android:inputType="textMultiLine|textAutoComplete"
-            android:text="address" />
+             />
 
         <TextView
             android:id="@+id/addressTextView"
@@ -139,7 +139,7 @@
             android:editable="true"
             android:ems="10"
             android:inputType="text"
-            android:text="itemName" />
+             />
 
         <Button
             android:id="@+id/logoutButton"
@@ -150,7 +150,10 @@
             android:layout_marginLeft="70dp"
             android:layout_marginTop="600dp"
             android:text="Logout"
-            android:textAllCaps="false" />
+            android:textAllCaps="false"
+            android:textColor="@color/colorPrimaryDark"
+            android:textColorHighlight="@color/colorPrimaryDark"
+            />
 
         <Button
             android:id="@+id/buyButton"

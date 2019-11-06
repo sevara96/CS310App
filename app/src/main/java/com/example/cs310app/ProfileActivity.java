@@ -38,10 +38,10 @@ public class ProfileActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         currId = mAuth.getCurrentUser().getUid();
         userRef = FirebaseDatabase.getInstance().getReference().child("Users").child(currId);
-        name = findViewById(R.id.name);
+        name = findViewById(R.id.fullName);
         phone = findViewById(R.id.phone);
         email = findViewById(R.id.email);
-        image = findViewById(R.id.image);
+        //image = findViewById(R.id.image);
 
 
         userRef.addValueEventListener(new ValueEventListener() {
@@ -51,13 +51,13 @@ public class ProfileActivity extends AppCompatActivity {
                     String myName = dataSnapshot.child("fullName").getValue().toString();
                     String myEmail = dataSnapshot.child("email").getValue().toString();
                     String myPhone = dataSnapshot.child("phone").getValue().toString();
-                    //Picasso.with(ProfileActivity.this).load(my)
+                    //String myProfileImage = dataSnapshot.child("profileImage").getValue().toString();
+                    // Picasso.with(ProfileActivity.this).load(myProfileImage).into(image);
 
 
                     name.setText(myName);
                     email.setText(myEmail);
                     phone.setText(myPhone);
-
                 }
 
             }
@@ -71,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         });
     }
+
     public void tosellpage(View view)
     {
         Intent intent = new Intent(ProfileActivity.this, SellActivity.class);
