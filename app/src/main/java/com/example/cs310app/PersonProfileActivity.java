@@ -90,6 +90,10 @@ public class PersonProfileActivity extends AppCompatActivity {
                     if(current_state.equals("request_received")){
                         acceptRequest();
                     }
+                    if(current_state.equals("friends")){
+                        DeclineRequest.setVisibility(View.INVISIBLE);
+                        SendRequest.setVisibility(View.INVISIBLE);
+                    }
                 }
             });
 
