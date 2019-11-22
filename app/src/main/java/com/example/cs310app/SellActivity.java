@@ -170,11 +170,15 @@ public class SellActivity extends AppCompatActivity {
             return false;
         }
         if (isEmpty(imgURL)) {
-            imgURL.setError("Image URL is required");
+            // imgURL.setError("Image URL is required");
+            Toast t =Toast.makeText(this,"You must enter image of the item to sell",Toast.LENGTH_SHORT);
+            t.show();
             return false;
         }
         if (isEmpty(Description)) {
-            Description.setError("Description is required");
+            //  Description.setError("Description is required");
+            Toast t =Toast.makeText(this,"You must enter description of the item to sell",Toast.LENGTH_SHORT);
+            t.show();
             return false;
         }
         return true;
