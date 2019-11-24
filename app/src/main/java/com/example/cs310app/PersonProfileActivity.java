@@ -52,15 +52,11 @@ public class PersonProfileActivity extends AppCompatActivity {
                     //String myProfileImage = dataSnapshot.child("profileImage").getValue().toString();
                     // Picasso.with(ProfileActivity.this).load(myProfileImage).into(image);
 
-
                     name.setText(myName);
                     email.setText(myEmail);
                     phone.setText(myPhone);
 
                     maintainButton();
-
-
-
                 }
 
             }

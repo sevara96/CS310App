@@ -15,15 +15,7 @@ import android.widget.Filterable;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
-
-import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filterable {
@@ -70,17 +62,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 String gPhone = items.get(position).getPhone();
 
 
-
-                // String gPrice = items.get(position).getPrice();
-                /////BitmapDrawable bitmapDrawable = (BitmapDrawable)myHolder.mImaeView.getDrawable(); //this will get our image from drawable
-                //^^^^^^ look in the above line if there is an error and it loads android image only
-                /////Bitmap bitmap = bitmapDrawable.getBitmap();
-
                 ByteArrayOutputStream stream = new ByteArrayOutputStream(); //image will get stream and bytes
-
-                /////bitmap.compress(Bitmap.CompressFormat.PNG,100, stream); //it will compress our image
-
-                /////byte[] bytes = stream.toByteArray();
 
                 //get our data with intent
                 Intent intent = new Intent(c, ItemPageActivity.class);
@@ -92,42 +74,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 intent.putExtra("iEmail", gEmail);
                 intent.putExtra("iPhone", gPhone);
 
-                /////intent.putExtra("iImage", bytes);
                 c.startActivity(intent);
 
             }
         });
-
-     /*   //use this code if you want to use different activities
-        myHolder.setItemClickListener(new ItemClickListener() {
-            @Override
-            public void onItemClickListener(View v, int position) {
-
-                if(items.get(position).getTitle().equals("Chair"){
-                    //then you can move another activity from if body
-                }
-                if(items.get(position).getTitle().equals("Bed"){
-                    //then you can move another activity from if body
-                }
-
-                //et cetera if statement
-            }
-        }); */
-
-//        Picasso.get().load("https://i.ebayimg.com/00/s/MTYwMFgxNjAw/z/bdMAAOSwbopZPlIT/$_57.JPG?set_id=8800005007").fit().into(myHolder.mImaeView, new Callback(){
-//            @Override
-//            public void onSuccess(){
-//
-//            }
-//            @Override
-//            public void onError(Exception e){
-//                e.printStackTrace();
-//
-//            }
-//        });
-
-        //myHolder.mImaeView.setImageBitmap(items.get(i).getItemPhotoURL());
-        //^^here we used image resource because we will use images in our resource folder which is drawable
 
     }
 

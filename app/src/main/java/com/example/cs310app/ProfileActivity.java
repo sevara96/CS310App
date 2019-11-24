@@ -59,14 +59,10 @@ public class ProfileActivity extends AppCompatActivity {
                     email.setText(myEmail);
                     phone.setText(myPhone);
                 }
-
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
-
-
 
             }
         });

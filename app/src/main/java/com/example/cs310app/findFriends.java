@@ -8,7 +8,6 @@ public class findFriends {
 
     }
 
-
     public String getProfileImage() {
         return profileImage;
     }
@@ -27,11 +26,7 @@ public class findFriends {
 
     public findFriends(String profileImage, String fullName){
 
-
-
         this.profileImage = profileImage;
         this.fullName = fullName;
-
-
     }
 }

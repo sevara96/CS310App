@@ -117,24 +117,15 @@ public class ItemPageActivity extends AppCompatActivity {
                                             appleSnapshot.getRef().removeValue();
                                         }
                                         toMainActivity();
-
                                     }
                                 });
-
                             }
-
                         }
 
                         @Override
                         public void onCancelled(@NonNull DatabaseError databaseError) {
-
                         }
                     });
-
-
-
-
-
                 }
             }
 
@@ -157,10 +148,8 @@ public class ItemPageActivity extends AppCompatActivity {
 
     }
 
-    private  void markItemSold(){
+    private void markItemSold(){
         clickPostref.removeValue();
-
-
 
         toMainActivity();
         Toast.makeText(this, "Item was marked sold " , Toast.LENGTH_SHORT).show();
@@ -175,13 +164,10 @@ public class ItemPageActivity extends AppCompatActivity {
     }
 
 
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         MenuInflater menuInflater = getMenuInflater();
         menuInflater.inflate(R.menu.menu, menu);
-
 
         return true;
     }

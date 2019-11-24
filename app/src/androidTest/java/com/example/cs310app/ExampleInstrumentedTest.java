@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+ public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
@@ -25,3 +25,15 @@ public class ExampleInstrumentedTest {
         assertEquals("com.example.cs310app", appContext.getPackageName());
     }
 }
+
+
+//@RunWith(AndroidJUnit4.class)
+// public class ExampleInstrumentedTest2 {
+//    @Test
+//    public void useAppContext2() {
+//        // Context of the app under test.
+//        Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
+//
+//        assertEquals("fakename", appContext.getPackageName());
+//    }
+//}

@@ -42,6 +42,46 @@ public class ItemPageActivityTest {
                 .check(matches(isDisplayed()));
     }
 
+    @Test
+    public void testItemPrice()
+    {
+        onView(withId(R.id.price))
+                .perform(click())
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testItemSellerName()
+    {
+        onView(withId(R.id.sellerName))
+                .perform(click())
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testItemSellerEmail()
+    {
+        onView(withId(R.id.sellerEmail))
+                .perform(click())
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testItemSellerPhone()
+    {
+        onView(withId(R.id.sellerPhone))
+                .perform(click())
+                .check(matches(isDisplayed()));
+    }
+
+    @Test
+    public void testItemSellerAddress()
+    {
+        onView(withId(R.id.sellerAddress))
+                .perform(click())
+                .check(matches(isDisplayed()));
+    }
+
     @After
     public void tearDown() throws Exception {
     }
