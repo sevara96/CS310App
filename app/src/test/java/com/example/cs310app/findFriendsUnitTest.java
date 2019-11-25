@@ -42,18 +42,16 @@ public class findFriendsUnitTest {
 
     @Test
     public void testsetProfileImage() {
-
-        ff.profileImage = "www.newimage.com";
-        String newpic = ff.profileImage;
-        assertTrue(newpic.equals(ff.profileImage));
+        ff.setProfileImage("www.newimage.com");
+        String newurl = ff.getProfileImage();
+        assertTrue(newurl.equals("www.newimage.com"));
     }
 
     @Test
     public void testsetFullName() {
-
-        ff.fullName = "C Wang";
-        String newname = ff.fullName;
-        assertTrue(newname.equals(ff.fullName));
+        ff.setFullName("C Wang");
+        String newname = ff.getFullName();
+        assertTrue(newname.equals("C Wang"));
     }
 
 }
