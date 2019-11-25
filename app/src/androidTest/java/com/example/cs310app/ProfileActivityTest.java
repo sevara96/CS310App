@@ -44,14 +44,6 @@ public class ProfileActivityTest {
 
     @Test
     public void testEmail(){
-       // Espresso.onView(ViewMatchers.withId(R.id.email)).check(ViewAssertions.matches(ViewMatchers.withText("jm@usc.edu")));
-      //  Espresso.onView(withText("JM")).inRoot(withDecorView(not(mProfileActivityTestRule.gestActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
-        //Espresso.onView(withId(R.id.fullName))
-          //      .check(matches(withContentDescription(containsString("JM"))));
-//        Espresso.onView(withId(R.id.fullName)) .check(matches(withText("JM ")));
-        //onView(withId(R.id.fullName)).check(matches(withText(("JM"))));
-//        ViewInteraction textView = Espresso.onView(ViewMatchers.withId(R.id.fullName));
-//        textView.check(ViewAssertions.matches(ViewMatchers.withText("JM")));
         onView(withId(R.id.email))        // withId(R.id.my_view) is a ViewMatcher
                 .perform(click())               // click() is a ViewAction
                 .check(matches(isDisplayed()));
