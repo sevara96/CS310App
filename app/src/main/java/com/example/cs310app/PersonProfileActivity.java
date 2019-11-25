@@ -35,37 +35,43 @@ public class PersonProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_profile);
         mAuth = FirebaseAuth.getInstance();
-        receiever_id= getIntent().getExtras().get("user_ref_id").toString();
-        sender_id = mAuth.getCurrentUser().getUid();
-        userRef = FirebaseDatabase.getInstance().getReference().child("Users");
-        friendReqRef = FirebaseDatabase.getInstance().getReference().child("Requests");
-        friendRef = FirebaseDatabase.getInstance().getReference().child("Friends");
+        
+        Bundle test = getIntent().getExtras();
+        if(test != null) {
+            receiever_id= getIntent().getExtras().get("user_ref_id").toString();
+            sender_id = mAuth.getCurrentUser().getUid();
+            userRef = FirebaseDatabase.getInstance().getReference().child("Users");
+            friendReqRef = FirebaseDatabase.getInstance().getReference().child("Requests");
+            friendRef = FirebaseDatabase.getInstance().getReference().child("Friends");
 
-        InitializeFields();
-        userRef.child(receiever_id).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                if(dataSnapshot.exists()){
-                    String myName = dataSnapshot.child("fullName").getValue().toString();
-                    String myEmail = dataSnapshot.child("email").getValue().toString();
-                    String myPhone = dataSnapshot.child("phone").getValue().toString();
-                    //String myProfileImage = dataSnapshot.child("profileImage").getValue().toString();
-                    // Picasso.with(ProfileActivity.this).load(myProfileImage).into(image);
+            InitializeFields();
+            userRef.child(receiever_id).addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if(dataSnapshot.exists()){
+                        String myName = dataSnapshot.child("fullName").getValue().toString();
+                        String myEmail = dataSnapshot.child("email").getValue().toString();
+                        String myPhone = dataSnapshot.child("phone").getValue().toString();
+                        //String myProfileImage = dataSnapshot.child("profileImage").getValue().toString();
+                        // Picasso.with(ProfileActivity.this).load(myProfileImage).into(image);
 
-                    name.setText(myName);
-                    email.setText(myEmail);
-                    phone.setText(myPhone);
+                        name.setText(myName);
+                        email.setText(myEmail);
+                        phone.setText(myPhone);
 
-                    maintainButton();
+                        maintainButton();
+                    }
+
                 }
 
-            }
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
+                }
+            });
+        } else {
+            return;
+        }
 
         DeclineRequest.setVisibility(View.INVISIBLE);
         DeclineRequest.setEnabled(false);
