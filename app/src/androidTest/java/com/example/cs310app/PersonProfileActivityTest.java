@@ -66,7 +66,7 @@ public class PersonProfileActivityTest extends AndroidJUnitRunner {
     }
 
     @Test
-    public void test() {
+    public void sendButton() {
 
         onView(withId(R.id.person_send_friend_req)).check(matches((isClickable())));
 
