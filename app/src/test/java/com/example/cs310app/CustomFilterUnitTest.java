@@ -18,7 +18,7 @@ public class CustomFilterUnitTest {
     @Before
     public void setUp(){
         filterList = new ArrayList<>();
-        adapter = new MyAdapter(null, null); //is this a problem
+        adapter = new MyAdapter(null, null);
         cf = new CustomFilter(filterList, adapter);
     }
 
@@ -31,7 +31,6 @@ public class CustomFilterUnitTest {
     public void testConstructor() {
         assertTrue(adapter.equals(cf.adapter));
         assertTrue(filterList.equals(cf.filterList));
-
     }
 }
 
