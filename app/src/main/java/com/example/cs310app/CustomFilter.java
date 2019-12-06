@@ -25,7 +25,12 @@ public class CustomFilter extends Filter {
             ArrayList<Item> filterItems = new ArrayList<>();
 
             for(int i = 0; i< filterList.size();i++){
-                if(filterList.get(i).getTitle().toUpperCase().contains(constraint)){
+                boolean titlecontains = filterList.get(i).getTitle().toUpperCase().contains(constraint);
+                boolean tagcontains = filterList.get(i).getTag().toUpperCase().contains(constraint);
+                boolean categorycontains = filterList.get(i).getCategory().toUpperCase().contains(constraint);
+                boolean sellernamecontains = filterList.get(i).getFullName().toUpperCase().equalsIgnoreCase((constraint).toString());
+
+                if(titlecontains || tagcontains || categorycontains || sellernamecontains){
                     filterItems.add(filterList.get(i));
                 }
             }

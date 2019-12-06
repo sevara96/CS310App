@@ -2,6 +2,7 @@ package com.example.cs310app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -62,8 +63,8 @@ public class ItemPageActivity extends AppCompatActivity {
         String mPrice = "Price: $"+intent.getStringExtra("iPrice");
         String mLocation = "Location: "+intent.getStringExtra("iLocation");
         final String mFullName ="Seller Name: "+intent.getStringExtra("iFullName");
-        String mPhone ="Seller Phone: "+intent.getStringExtra("iPhone");
-        String mEmail ="Seller Email: "+intent.getStringExtra("iEmail");
+        String mTag ="Tag: "+intent.getStringExtra("iTag");
+        String mCategory ="Category: "+intent.getStringExtra("iCategory");
 
 
 
@@ -78,12 +79,12 @@ public class ItemPageActivity extends AppCompatActivity {
 
         mTitleTv.setText(mTitle);
         mDescTv.setText(mDescription);
-
+        mFullNameTv.setText(Html.fromHtml("<u>"+mFullName+"</u>") );
         mPriceTv.setText(mPrice);
         mLocationTv.setText(mLocation);
-        mFullNameTv.setText(mFullName);
-        mPhoneTv.setText(mPhone);
-        mEmailTv.setText(mEmail);
+        //mFullNameTv.setText(mFullName);
+        mPhoneTv.setText(mTag);
+        mEmailTv.setText(mCategory);
 
         mAuth =FirebaseAuth.getInstance();
         currentUserID = mAuth.getCurrentUser().getUid();
@@ -149,10 +150,7 @@ public class ItemPageActivity extends AppCompatActivity {
 
                         for(DataSnapshot child: snapshot.getChildren()) {
                             user_ref_id = child.getKey();
-
                         }
-
-
                         Intent intent = new Intent(ItemPageActivity.this, PersonProfileActivity.class);
                         intent.putExtra("user_ref_id", user_ref_id);
                         startActivity(intent);

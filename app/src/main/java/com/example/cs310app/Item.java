@@ -11,8 +11,8 @@ public class Item {
     private String address;
     private String itemPhotoURL;
     private String title;
-    private String tag;
-    private String category;
+    private String tag=" ";
+    private String category=" ";
     private double price;
     private String fullName;
     private String email;
@@ -91,6 +91,13 @@ public class Item {
     public String getStringPrice() {
         String p = Double.toString(price);
         return p;
+    }
+    public String getTag() {
+        return tag;
+    }
+
+    public String getCategory() {
+        return category;
     }
 
     public String getAddress() {return address;}

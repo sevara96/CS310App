@@ -54,7 +54,7 @@
         android:text="Seller Name"
         android:id="@+id/sellerName"
         android:textSize="18sp"
-        android:textColor="#a9a9a9"
+        android:textColor="#0000FF"
         android:layout_below="@id/price"
         android:layout_marginTop="5dp"
         />

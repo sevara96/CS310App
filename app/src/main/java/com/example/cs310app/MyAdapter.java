@@ -58,8 +58,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 String gPrice = items.get(position).getStringPrice();
                 String gLocation = items.get(position).getAddress();
                 String gFullName =items.get(position).getFullName();
-                String gEmail = items.get(position).getEmail();
-                String gPhone = items.get(position).getPhone();
+                String gTag = items.get(position).getTag();
+                String gCategory = items.get(position).getCategory();
 
                 ByteArrayOutputStream stream = new ByteArrayOutputStream(); //image will get stream and bytes
 
@@ -70,8 +70,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 intent.putExtra("iPrice", gPrice);
                 intent.putExtra("iLocation", gLocation);
                 intent.putExtra("iFullName", gFullName);
-                intent.putExtra("iEmail", gEmail);
-                intent.putExtra("iPhone", gPhone);
+                intent.putExtra("iTag", gTag);
+                intent.putExtra("iCategory", gCategory);
                 c.startActivity(intent);
 
             }
