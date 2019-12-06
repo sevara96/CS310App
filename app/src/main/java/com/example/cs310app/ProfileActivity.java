@@ -97,4 +97,9 @@ public class ProfileActivity extends AppCompatActivity {
         startActivity(loginIntent);
         finish();
     }
+
+//    public void toFRequestPage(View view){
+//        Intent intent = new Intent(ProfileActivity.this, FriendRequestActivity.class);
+//        startActivity(intent);
+//    }
 }

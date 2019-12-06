@@ -32,10 +32,10 @@ public class SellActivity extends AppCompatActivity {
     private DatabaseReference UsersRef,PostsRef;
     private FirebaseAuth mAuth;
     private String current_user_id;
-    private String name,desc,imgUrl,address;
+    private String name,desc,address,category,tag;
     private String saveCurrentTime,saveCurrentDate,postRandomName;
     private double price;
-    EditText itemName,Description,imgURL,Address,Price;
+    EditText itemName,Description,Address,Price,Category, Tag;
     //private NavigationView navigationView;
 
     @Override
@@ -61,21 +61,23 @@ public class SellActivity extends AppCompatActivity {
 
         itemName = (EditText) findViewById(R.id.itemNameEditText);
         Description = (EditText) findViewById(R.id.descEditText);
-        imgURL = (EditText) findViewById(R.id.URLeditText);
         Address = (EditText) findViewById(R.id.addressEditText);
         Price = (EditText) findViewById(R.id.priceEditText);
+        Category = (EditText) findViewById(R.id.categoryEditText);
+        Tag = (EditText) findViewById(R.id.tagEditText);
         Button saleButton = (Button) findViewById( R.id.saleButton );
         saleButton.setOnClickListener(new View.OnClickListener() {
                                           @Override
                                           public void onClick(View view) {
                                               // check data
-                                              if (checkDataEntered(itemName, imgURL, Description) == true) {
+                                              if (checkDataEntered(itemName, Description) == true) {
                                                   name = itemName.getText().toString();
                                                   desc = Description.getText().toString();
-                                                  imgUrl = imgURL.getText().toString();
                                                   address = Address.getText().toString();
                                                   String sPrice = Price.getText().toString();
                                                   price = Double.parseDouble(sPrice);
+                                                  category=Category.getText().toString();
+                                                  tag=Tag.getText().toString();
                                                   //save information to database​
                                                   SavingPostInformationToDatabase();
                                               }
@@ -113,9 +115,10 @@ public class SellActivity extends AppCompatActivity {
                     postsMap.put("uid",current_user_id );
                     postsMap.put("title",name );
                     postsMap.put("description",desc );
-                    postsMap.put("imageURL",imgUrl );
                     postsMap.put("address",address );
                     postsMap.put("price",price );
+                    postsMap.put("category",category);
+                    postsMap.put("tag",tag);
                     postsMap.put("fullName",userFullName);///////////////////////////
                     postsMap.put("email",email);/////////////////////////////////
                     postsMap.put("phone",phone);////////////////////////////
@@ -163,15 +166,9 @@ public class SellActivity extends AppCompatActivity {
         return TextUtils.isEmpty(str);
     }
 
-    boolean checkDataEntered(EditText itemName,EditText imgURL,EditText Description){
+    boolean checkDataEntered(EditText itemName,EditText Description){
         if (isEmpty(itemName)) {
             Toast t =Toast.makeText(this,"You must enter name of the item to sell",Toast.LENGTH_SHORT);
-            t.show();
-            return false;
-        }
-        if (isEmpty(imgURL)) {
-            // imgURL.setError("Image URL is required");
-            Toast t =Toast.makeText(this,"You must enter image of the item to sell",Toast.LENGTH_SHORT);
             t.show();
             return false;
         }

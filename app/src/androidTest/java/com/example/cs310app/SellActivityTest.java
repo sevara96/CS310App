@@ -43,18 +43,18 @@ public class SellActivityTest {
         Espresso.onView(withText("You must enter image of the item to sell")).inRoot(withDecorView(not(mSellActivityTestRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
     }
 
-    @Test
-    public void testOnlyItemImageURL()
-    {
-        //input some text in item image url edit box
-        Espresso.onView(withId(R.id.URLeditText)).perform(typeText(imageURL));
-        //close soft keyboard
-        Espresso.closeSoftKeyboard();
-        //perform button click
-        Espresso.onView(withId(R.id.saleButton)).perform(click());
-        //checking the text in the textview
-        Espresso.onView(withText("You must enter name of the item to sell")).inRoot(withDecorView(not(mSellActivityTestRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
-    }
+//    @Test
+//    public void testOnlyItemImageURL()
+//    {
+//        //input some text in item image url edit box
+//        Espresso.onView(withId(R.id.URLeditText)).perform(typeText(imageURL));
+//        //close soft keyboard
+//        Espresso.closeSoftKeyboard();
+//        //perform button click
+//        Espresso.onView(withId(R.id.saleButton)).perform(click());
+//        //checking the text in the textview
+//        Espresso.onView(withText("You must enter name of the item to sell")).inRoot(withDecorView(not(mSellActivityTestRule.getActivity().getWindow().getDecorView()))).check(matches(isDisplayed()));
+//    }
 
     @Test
     public void testOnlyItemDescription()
@@ -84,7 +84,7 @@ public class SellActivityTest {
         //input some text in item name edit box
         Espresso.onView(withId(R.id.itemNameEditText)).perform(typeText(itemName));
         //input some text in item image url edit box
-        Espresso.onView(withId(R.id.URLeditText)).perform(typeText(imageURL));
+        //Espresso.onView(withId(R.id.URLeditText)).perform(typeText(imageURL));
         //close soft keyboard
         Espresso.closeSoftKeyboard();
         //perform button click
@@ -112,7 +112,7 @@ public class SellActivityTest {
     public void testNoItemName()
     {
         //input some text in item url edit box
-        Espresso.onView(withId(R.id.URLeditText)).perform(typeText(imageURL));
+        //Espresso.onView(withId(R.id.URLeditText)).perform(typeText(imageURL));
         //input some text in item description edit box
         Espresso.onView(withId(R.id.descEditText)).perform(typeText(description));
         //close soft keyboard

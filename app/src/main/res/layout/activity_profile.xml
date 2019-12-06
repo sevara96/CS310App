@@ -97,6 +97,17 @@
         android:layout_alignParentLeft="true"
          />
 
+<!--   <Button-->
+<!--    android:id="@+id/friendRequestsButton"-->
+<!--    android:layout_width="wrap_content"-->
+<!--    android:layout_height="wrap_content"-->
+<!--    android:onClick="toFRequestPage"-->
+<!--    android:text="See Friend Requests"-->
+<!--       android:layout_above="@+id/tofindfriendsbutton"-->
+<!--       android:layout_centerVertical="true"-->
+<!--       android:layout_centerHorizontal="true"-->
+
+<!--    />-->
 
 </RelativeLayout>
 

@@ -11,7 +11,8 @@ public class Item {
     private String address;
     private String itemPhotoURL;
     private String title;
-    //    private List<String> tags;
+    private String tag;
+    private String category;
     private double price;
     private String fullName;
     private String email;
@@ -36,6 +37,17 @@ public class Item {
         this.fullName = fullName;
         this.email = email;
         this.phone = phone;
+    }
+    public Item(String title, String itemPhotoURL, String description, double price, String fullName, String email, String phone, String tag, String category){
+        this.title=title;
+        this.itemPhotoURL=itemPhotoURL;
+        this.description=description;
+        this.price = price;
+        this.fullName = fullName;
+        this.email = email;
+        this.phone = phone;
+        this.tag = tag;
+        this.category= category;
     }
 
     public Item(){}

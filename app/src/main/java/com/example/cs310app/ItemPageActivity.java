@@ -2,6 +2,7 @@ package com.example.cs310app;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -21,6 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 public class ItemPageActivity extends AppCompatActivity {
 
@@ -50,7 +52,6 @@ public class ItemPageActivity extends AppCompatActivity {
         mPhoneTv = findViewById(R.id.sellerPhone);
         mFullNameTv = findViewById(R.id.sellerName);
 
-
         //get data from intent where we put our data
         Intent intent = getIntent();
 
@@ -61,8 +62,6 @@ public class ItemPageActivity extends AppCompatActivity {
         String mFullName ="Seller Name: "+intent.getStringExtra("iFullName");
         String mPhone ="Seller Phone: "+intent.getStringExtra("iPhone");
         String mEmail ="Seller Email: "+intent.getStringExtra("iEmail");
-
-
 
         /////byte[] mBytes = getIntent().getByteArrayExtra("iImage");
         //now you need to decode the image because from preious activity we get our image in bytes

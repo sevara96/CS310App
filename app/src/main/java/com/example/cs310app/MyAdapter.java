@@ -61,7 +61,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 String gEmail = items.get(position).getEmail();
                 String gPhone = items.get(position).getPhone();
 
-
                 ByteArrayOutputStream stream = new ByteArrayOutputStream(); //image will get stream and bytes
 
                 //get our data with intent
@@ -73,7 +72,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyHolder> implements Filtera
                 intent.putExtra("iFullName", gFullName);
                 intent.putExtra("iEmail", gEmail);
                 intent.putExtra("iPhone", gPhone);
-
                 c.startActivity(intent);
 
             }
