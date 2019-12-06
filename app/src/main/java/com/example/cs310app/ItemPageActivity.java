@@ -22,7 +22,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 public class ItemPageActivity extends AppCompatActivity {
 
@@ -33,6 +32,7 @@ public class ItemPageActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String currentUserID;
     private DatabaseReference clickPostref;
+    private DatabaseReference allUsersDatabaseRef;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class ItemPageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_item_page);
 
         ActionBar actionBar = getSupportActionBar();
+        allUsersDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
         mTitleTv = findViewById(R.id.title);
         mDescTv= findViewById(R.id.description);
@@ -52,6 +53,7 @@ public class ItemPageActivity extends AppCompatActivity {
         mPhoneTv = findViewById(R.id.sellerPhone);
         mFullNameTv = findViewById(R.id.sellerName);
 
+
         //get data from intent where we put our data
         Intent intent = getIntent();
 
@@ -59,9 +61,11 @@ public class ItemPageActivity extends AppCompatActivity {
         String mDescription = "Description: "+intent.getStringExtra("iDesc");
         String mPrice = "Price: $"+intent.getStringExtra("iPrice");
         String mLocation = "Location: "+intent.getStringExtra("iLocation");
-        String mFullName ="Seller Name: "+intent.getStringExtra("iFullName");
+        final String mFullName ="Seller Name: "+intent.getStringExtra("iFullName");
         String mPhone ="Seller Phone: "+intent.getStringExtra("iPhone");
         String mEmail ="Seller Email: "+intent.getStringExtra("iEmail");
+
+
 
         /////byte[] mBytes = getIntent().getByteArrayExtra("iImage");
         //now you need to decode the image because from preious activity we get our image in bytes
@@ -90,8 +94,9 @@ public class ItemPageActivity extends AppCompatActivity {
 
 
 
-        Query clickPostref = FirebaseDatabase.getInstance().getReference().child("Items").orderByChild("title").equalTo(mTitle);
+        final Query clickPostref = FirebaseDatabase.getInstance().getReference().child("Items").orderByChild("title").equalTo(mTitle);
         final Query dataBaseUserId = FirebaseDatabase.getInstance().getReference().child("Items").orderByChild("uid").equalTo(currentUserID);
+
 
 
         clickPostref.addValueEventListener(new ValueEventListener() {
@@ -130,6 +135,33 @@ public class ItemPageActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mFullNameTv.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v){
+                String fullName = mFullName;
+                allUsersDatabaseRef.orderByChild("fullName").equalTo(getIntent().getStringExtra("iFullName")).addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        String user_ref_id = "test";
+
+                        for(DataSnapshot child: snapshot.getChildren()) {
+                            user_ref_id = child.getKey();
+
+                        }
+
+
+                        Intent intent = new Intent(ItemPageActivity.this, PersonProfileActivity.class);
+                        intent.putExtra("user_ref_id", user_ref_id);
+                        startActivity(intent);
+
+                    }
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                    }
+                });
 
             }
         });
