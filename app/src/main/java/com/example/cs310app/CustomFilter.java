@@ -26,9 +26,9 @@ public class CustomFilter extends Filter {
 
             for(int i = 0; i< filterList.size();i++){
                 boolean titlecontains = filterList.get(i).getTitle().toUpperCase().contains(constraint);
-                boolean tagcontains = filterList.get(i).getTag().toUpperCase().contains(constraint);
+                boolean tagcontains = filterList.get(i).getTag().toUpperCase().contains(constraint) ;
                 boolean categorycontains = filterList.get(i).getCategory().toUpperCase().contains(constraint);
-                boolean sellernamecontains = filterList.get(i).getFullName().toUpperCase().equalsIgnoreCase((constraint).toString());
+                boolean sellernamecontains = filterList.get(i).getFullName().toUpperCase().contains(constraint);
 
                 if(titlecontains || tagcontains || categorycontains || sellernamecontains){
                     filterItems.add(filterList.get(i));
