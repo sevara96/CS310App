@@ -29,6 +29,7 @@ public class FriendRequestActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private String currentUserID;
     private DatabaseReference friendRequests;
+    private DatabaseReference allUsersDatabaseRef;
     private TableLayout table;
 
     @Override
@@ -37,6 +38,7 @@ public class FriendRequestActivity extends AppCompatActivity {
         setContentView(R.layout.activity_friend_request);
         mAuth =FirebaseAuth.getInstance();
         friendRequests = FirebaseDatabase.getInstance().getReference().child("Requests");
+        allUsersDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
         currentUserID = mAuth.getCurrentUser().getUid();
         table = findViewById(R.id.friendRequestTable);
         final ArrayList<String> items = new ArrayList<>();
@@ -65,6 +67,29 @@ public class FriendRequestActivity extends AppCompatActivity {
                                             String userName = dataSnapshot.getValue().toString();
                                             TableRow tr = new TableRow(FriendRequestActivity.this);
                                             TextView name = new TextView(FriendRequestActivity.this);
+                                            name.setOnClickListener(new View.OnClickListener(){
+                                                public void onClick(View v){
+                                                    String fullName = userName;
+                                                    allUsersDatabaseRef.orderByChild("fullName").equalTo(userName).addListenerForSingleValueEvent(new ValueEventListener() {
+                                                        @Override
+                                                        public void onDataChange(DataSnapshot snapshot) {
+                                                            String user_ref_id = "test";
+
+                                                            for(DataSnapshot child: snapshot.getChildren()) {
+                                                                user_ref_id = child.getKey();
+                                                            }
+                                                            Intent intent = new Intent(FriendRequestActivity.this, PersonProfileActivity.class);
+                                                            intent.putExtra("user_ref_id", user_ref_id);
+                                                            startActivity(intent);
+
+                                                        }
+                                                        @Override
+                                                        public void onCancelled(DatabaseError databaseError) {
+                                                        }
+                                                    });
+
+                                                }
+                                            });
                                             name.setGravity(Gravity.CENTER_VERTICAL | Gravity.CENTER_HORIZONTAL);
                                             name.setTextSize(TypedValue.COMPLEX_UNIT_DIP, 25);
                                             name.setTypeface(null, Typeface.BOLD);
