@@ -64,7 +64,7 @@ public class FriendRequestActivity extends AppCompatActivity {
                                     tempReference2.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            String userName = dataSnapshot.getValue().toString();
+                                            final String userName = dataSnapshot.getValue().toString();
                                             TableRow tr = new TableRow(FriendRequestActivity.this);
                                             TextView name = new TextView(FriendRequestActivity.this);
                                             name.setOnClickListener(new View.OnClickListener(){
